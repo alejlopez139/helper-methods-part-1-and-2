@@ -2,7 +2,6 @@ class MoviesController < ApplicationController
   def new
     @the_movie = Movie.new
 
-    render template: "movies/new"
   end
 
   def index
@@ -14,10 +13,7 @@ class MoviesController < ApplicationController
       format.json do
         render json: @list_of_movies
       end
-
-      format.html do
-        render template: "movies/index"
-      end
+      format.html
     end
   end
 
@@ -28,7 +24,6 @@ class MoviesController < ApplicationController
 
     @the_movie = matching_movies.first
 
-    render template: "movies/show"
   end
 
   def create
@@ -40,7 +35,7 @@ class MoviesController < ApplicationController
       @the_movie.save
       redirect_to movies_url, :notice => "Movie created successfully."
     else
-      render template: "movies/new"
+       "new"
     end
   end
 
@@ -51,7 +46,6 @@ class MoviesController < ApplicationController
 
     @the_movie = matching_movies.first
 
-    render template: "movies/edit" 
   end
 
   def update
